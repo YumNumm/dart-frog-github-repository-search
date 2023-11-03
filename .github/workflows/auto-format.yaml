@@ -4,9 +4,6 @@ name: Auto Format
 
 on:
   workflow_dispatch:
-  # 毎週月曜日の日本時間で午前9時に自動実行
-  schedule:
-    - cron: "0 0 * * 1"
   push:
   pull_request:
 
@@ -48,5 +45,5 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           delete-branch: true
-          
-         
+
+
