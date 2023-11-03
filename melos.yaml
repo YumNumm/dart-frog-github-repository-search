@@ -1,0 +1,41 @@
+name: dart-frog-github-repository-search^workspace
+repository: https://github.com/YumNumm/dart-frog-github-repository-search.git
+
+command:
+  version:
+    linkToCommits: true
+
+  bootstrap:
+    # "pub get"を並列実行すると、いくつかの問題が発生するようです
+    # (https://github.com/dart-lang/pub/issues/3404)
+    # この機能を無効にすることで、CIにおける安定性が向上します。
+    runPubGetInParallel: false
+
+scripts:
+  analyze:
+    exec: dart analyze
+    description: |
+      Run `dart analyze` in all packages.
+       - Note: you can also rely on your IDEs Dart Analysis / Issues window.
+
+  build_runner:
+    exec: dart pub run build_runner build -d
+    packageFilters:
+      dependsOn: build_runner
+
+  format:
+    exec: $PWD/util/format.sh
+
+  test:
+    exec: dart test
+    description: すべてのパッケージに対して`dart test`を実行します。
+    packageFilters:
+      dirExists: test
+
+ide:
+  intellij:
+    enabled: false
+
+packages:
+  - .
+  - packages/*

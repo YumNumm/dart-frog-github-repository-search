@@ -1,2 +1,5 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+# dart-frog github-repository-search
+
+## 概要
+Dart Frog BFFを利用するGitHubレポジトリ検索アプリケーション
+
