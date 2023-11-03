@@ -1,4 +1,4 @@
-name: dart-frog-github-repository-search^workspace
+name: dart-frog-github-repository-search-workspace
 repository: https://github.com/YumNumm/dart-frog-github-repository-search.git
 
 command:
