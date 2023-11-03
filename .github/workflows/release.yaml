@@ -148,7 +148,7 @@ jobs:
       - name: Deploy to GitHub Pages
         if: matrix.os == 'ubuntu-latest'
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
 
       - name: Upload IPA artifact
         if: matrix.os == 'macos-latest'
