@@ -1,0 +1,34 @@
+# ref https://danger.systems/
+# ref https://github.com/mateuszszklarek/danger-flutter_lint
+# ref https://tech.connehito.com/entry/danger
+
+# プルリクの範囲外にある error 以外のインラインメッセージを無視する
+github.dismiss_out_of_range_messages({
+  error: false,
+  warning: true,
+  message: true,
+  markdown: true
+})
+
+# lint
+flutter_lint.only_modified_files = true
+flutter_lint.report_path = "flutter_analyze_report.txt"
+flutter_lint.lint(inline_mode: true)
+
+# warning 数は flutter_analyze_report.txt の数のみとしたいので、ここで変数に保存
+warning_count = status_report[:warnings].count
+
+# 説明がない場合
+fail 'PRのコメントを入力してください' if github.pr_body.length < 1
+
+# Danger でエラーがある場合は既に何かしらコメントされているのでここで終了
+return unless status_report[:errors].empty?
+
+# 成功のコメント
+comment = ':heavy_check_mark:Pull request check passed.'
+
+if warning_count > 0
+  comment += " (But **#{warning_count}** warnings reported by Linter.)"
+end
+
+markdown comment

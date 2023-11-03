@@ -1,0 +1,8 @@
+# This Gemfile is for the setup step of the Cirrus Mac tasks
+source 'https://rubygems.org'
+
+# https://github.com/danger/danger
+gem 'danger', '~> 9.3'
+
+# https://github.com/mateuszszklarek/danger-flutter_lint
+gem 'danger-flutter_lint', '~> 1.0'
