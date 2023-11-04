@@ -20,7 +20,7 @@ class HomeRoute extends GoRouteData {
   const HomeRoute();
 
   @override
-  Widget build(BuildContext context) => const SearchPage();
+  Widget build(BuildContext context, GoRouterState state) => const SearchPage();
 }
 
 @TypedGoRoute<SettingRoute>(
@@ -38,7 +38,7 @@ class SettingRoute extends GoRouteData {
   const SettingRoute();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, GoRouterState state) {
     return const SettingView();
   }
 }
@@ -47,7 +47,7 @@ class ThemeChoiceRoute extends GoRouteData {
   const ThemeChoiceRoute();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, GoRouterState state) {
     return const ThemeChoicePage();
   }
 }
@@ -56,7 +56,7 @@ class LanguageChoiceRoute extends GoRouteData {
   const LanguageChoiceRoute();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, GoRouterState state) {
     return const LanguageChoicePage();
   }
 }

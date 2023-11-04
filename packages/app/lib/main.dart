@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: depend_on_referenced_packages
@@ -59,8 +58,3 @@ Future<void> main() async {
     ),
   );
 }
-
-Future<void> onFlutterError(FlutterErrorDetails details) async => Logger().wtf(
-      'Error: ${details.exception}',
-      details.exception,
-    );
