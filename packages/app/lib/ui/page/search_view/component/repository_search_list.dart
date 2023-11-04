@@ -66,8 +66,8 @@ class RepositorySearchErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (error.runtimeType == DioError) {
-      final dioError = error as DioError;
+    if (error.runtimeType == DioException) {
+      final dioError = error as DioException;
       log(dioError.type.toString());
       return SingleChildScrollView(
         child: Column(
@@ -81,21 +81,18 @@ class RepositorySearchErrorWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: () {
                 switch (dioError.type) {
-                  case DioErrorType.connectTimeout:
-                  case DioErrorType.receiveTimeout:
-                  case DioErrorType.sendTimeout:
-                  case DioErrorType.other:
-                  case DioErrorType.cancel:
+                  case DioExceptionType.cancel:
                     return Center(
                       child: Text(
                         t.DioError[dioError.type.name]!.toString(),
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
                               color: Theme.of(context).colorScheme.error,
                               fontWeight: FontWeight.bold,
                             ),
                       ),
                     );
-                  case DioErrorType.response:
+                  // TODO(YumNumm): エラーハンドリング
+                  default:
                     return Center(
                       child: Text(
                         (dioError.response != null)
@@ -105,7 +102,7 @@ class RepositorySearchErrorWidget extends StatelessWidget {
                                     ?.toString() ??
                                 t.DioError['other']!.toString()
                             : t.DioError['other']!.toString(),
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
                               color: Theme.of(context).colorScheme.error,
                               fontWeight: FontWeight.bold,
                             ),
