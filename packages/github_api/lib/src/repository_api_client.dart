@@ -15,7 +15,7 @@ abstract class RepositoryApiClient {
   // OAuth認証を使うと、1分あたり30回までリクエスト可能
   // https://docs.github.com/en/rest/search#rate-limit
   @GET('/search/repositories')
-  Future<SearchResponse> fetch({ 
+  Future<SearchResponse> fetch({
     /// application/vnd.github+json
     @Header('accept') required String accept,
     @Header('User-Agent') required String userAgent,
