@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:bff_api_types/bff_api_types.dart';
 import 'package:dart_frog/dart_frog.dart';
@@ -15,7 +16,7 @@ class ApiError extends Response {
     Object? exception,
   }) =>
       ApiError._(
-        statusCode: 400,
+        statusCode: HttpStatus.badRequest,
         headers: _headers,
         data: ApiErrorResponse(
           type: type,
@@ -30,7 +31,7 @@ class ApiError extends Response {
     List<HttpMethod>? allow,
   }) =>
       ApiError._(
-        statusCode: 405,
+        statusCode: HttpStatus.methodNotAllowed,
         headers: {
           ..._headers,
           'Allow': allow?.map((e) => e.toString()).join(', ') ?? '',
@@ -50,7 +51,7 @@ class ApiError extends Response {
     Object? exception,
   }) =>
       ApiError._(
-        statusCode: 500,
+        statusCode: HttpStatus.internalServerError,
         headers: _headers,
         data: ApiErrorResponse(
           type: type,
