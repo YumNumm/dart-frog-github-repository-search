@@ -13,6 +13,8 @@ class SearchResponseItem with _$SearchResponseItem {
     required bool private,
     required String htmlUrl,
     required String? description,
+    required String masterBranch,
+    required String defaultBranch,
     required bool fork,
     required DateTime createdAt,
     required DateTime updatedAt,
@@ -23,7 +25,6 @@ class SearchResponseItem with _$SearchResponseItem {
     required String? language,
     required int forksCount,
     required int openIssuesCount,
-    required String? masterBranch,
     required int forks,
     required int openIssues,
     required int watchers,
@@ -35,6 +36,8 @@ class SearchResponseItem with _$SearchResponseItem {
     required bool archived,
     required SearchResponseLicense? license,
     required SearchResponseOwner owner,
+    required String? homepage,
+    required String? mirrorUrl,
     required List<String> topics,
   }) = _SearchResponseItem;
 

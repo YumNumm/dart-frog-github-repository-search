@@ -21,6 +21,8 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
           private: $checkedConvert('private', (v) => v as bool),
           htmlUrl: $checkedConvert('html_url', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String?),
+          masterBranch: $checkedConvert('master_branch', (v) => v as String),
+          defaultBranch: $checkedConvert('default_branch', (v) => v as String),
           fork: $checkedConvert('fork', (v) => v as bool),
           createdAt:
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
@@ -35,7 +37,6 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
           forksCount: $checkedConvert('forks_count', (v) => v as int),
           openIssuesCount:
               $checkedConvert('open_issues_count', (v) => v as int),
-          masterBranch: $checkedConvert('master_branch', (v) => v as String?),
           forks: $checkedConvert('forks', (v) => v as int),
           openIssues: $checkedConvert('open_issues', (v) => v as int),
           watchers: $checkedConvert('watchers', (v) => v as int),
@@ -52,6 +53,8 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
                   : SearchResponseLicense.fromJson(v as Map<String, dynamic>)),
           owner: $checkedConvert('owner',
               (v) => SearchResponseOwner.fromJson(v as Map<String, dynamic>)),
+          homepage: $checkedConvert('homepage', (v) => v as String?),
+          mirrorUrl: $checkedConvert('mirror_url', (v) => v as String?),
           topics: $checkedConvert('topics',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
         );
@@ -61,6 +64,8 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
         'nodeId': 'node_id',
         'fullName': 'full_name',
         'htmlUrl': 'html_url',
+        'masterBranch': 'master_branch',
+        'defaultBranch': 'default_branch',
         'createdAt': 'created_at',
         'updatedAt': 'updated_at',
         'pushedAt': 'pushed_at',
@@ -68,13 +73,13 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
         'watchersCount': 'watchers_count',
         'forksCount': 'forks_count',
         'openIssuesCount': 'open_issues_count',
-        'masterBranch': 'master_branch',
         'openIssues': 'open_issues',
         'hasIssues': 'has_issues',
         'hasProjects': 'has_projects',
         'hasPages': 'has_pages',
         'hasWiki': 'has_wiki',
-        'hasDownloads': 'has_downloads'
+        'hasDownloads': 'has_downloads',
+        'mirrorUrl': 'mirror_url'
       },
     );
 
@@ -87,6 +92,8 @@ Map<String, dynamic> _$$SearchResponseItemImplToJson(
       'private': instance.private,
       'html_url': instance.htmlUrl,
       'description': instance.description,
+      'master_branch': instance.masterBranch,
+      'default_branch': instance.defaultBranch,
       'fork': instance.fork,
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt.toIso8601String(),
@@ -97,7 +104,6 @@ Map<String, dynamic> _$$SearchResponseItemImplToJson(
       'language': instance.language,
       'forks_count': instance.forksCount,
       'open_issues_count': instance.openIssuesCount,
-      'master_branch': instance.masterBranch,
       'forks': instance.forks,
       'open_issues': instance.openIssues,
       'watchers': instance.watchers,
@@ -109,5 +115,7 @@ Map<String, dynamic> _$$SearchResponseItemImplToJson(
       'archived': instance.archived,
       'license': instance.license,
       'owner': instance.owner,
+      'homepage': instance.homepage,
+      'mirror_url': instance.mirrorUrl,
       'topics': instance.topics,
     };

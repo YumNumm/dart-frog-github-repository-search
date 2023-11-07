@@ -7,11 +7,15 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  dart_frog: ^1.0.0
   bff_api_types:
     git:
       url: git@github.com:YumNumm/dart-frog-github-repository-search.git
       path: packages/bff_api_types
+  dart_frog: ^1.0.0
+  github_api:
+    git:
+      url: git@github.com:YumNumm/dart-frog-github-repository-search.git
+      path: packages/github_api
 
 dev_dependencies:
   mocktail: ^1.0.0

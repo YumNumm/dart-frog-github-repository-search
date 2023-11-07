@@ -26,6 +26,8 @@ mixin _$SearchResponseItem {
   bool get private => throw _privateConstructorUsedError;
   String get htmlUrl => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  String get masterBranch => throw _privateConstructorUsedError;
+  String get defaultBranch => throw _privateConstructorUsedError;
   bool get fork => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
@@ -36,7 +38,6 @@ mixin _$SearchResponseItem {
   String? get language => throw _privateConstructorUsedError;
   int get forksCount => throw _privateConstructorUsedError;
   int get openIssuesCount => throw _privateConstructorUsedError;
-  String? get masterBranch => throw _privateConstructorUsedError;
   int get forks => throw _privateConstructorUsedError;
   int get openIssues => throw _privateConstructorUsedError;
   int get watchers => throw _privateConstructorUsedError;
@@ -48,6 +49,8 @@ mixin _$SearchResponseItem {
   bool get archived => throw _privateConstructorUsedError;
   SearchResponseLicense? get license => throw _privateConstructorUsedError;
   SearchResponseOwner get owner => throw _privateConstructorUsedError;
+  String? get homepage => throw _privateConstructorUsedError;
+  String? get mirrorUrl => throw _privateConstructorUsedError;
   List<String> get topics => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -69,6 +72,8 @@ abstract class $SearchResponseItemCopyWith<$Res> {
       bool private,
       String htmlUrl,
       String? description,
+      String masterBranch,
+      String defaultBranch,
       bool fork,
       DateTime createdAt,
       DateTime updatedAt,
@@ -79,7 +84,6 @@ abstract class $SearchResponseItemCopyWith<$Res> {
       String? language,
       int forksCount,
       int openIssuesCount,
-      String? masterBranch,
       int forks,
       int openIssues,
       int watchers,
@@ -91,6 +95,8 @@ abstract class $SearchResponseItemCopyWith<$Res> {
       bool archived,
       SearchResponseLicense? license,
       SearchResponseOwner owner,
+      String? homepage,
+      String? mirrorUrl,
       List<String> topics});
 
   $SearchResponseLicenseCopyWith<$Res>? get license;
@@ -116,6 +122,8 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
     Object? private = null,
     Object? htmlUrl = null,
     Object? description = freezed,
+    Object? masterBranch = null,
+    Object? defaultBranch = null,
     Object? fork = null,
     Object? createdAt = null,
     Object? updatedAt = null,
@@ -126,7 +134,6 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
     Object? language = freezed,
     Object? forksCount = null,
     Object? openIssuesCount = null,
-    Object? masterBranch = freezed,
     Object? forks = null,
     Object? openIssues = null,
     Object? watchers = null,
@@ -138,6 +145,8 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
     Object? archived = null,
     Object? license = freezed,
     Object? owner = null,
+    Object? homepage = freezed,
+    Object? mirrorUrl = freezed,
     Object? topics = null,
   }) {
     return _then(_value.copyWith(
@@ -165,6 +174,14 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      masterBranch: null == masterBranch
+          ? _value.masterBranch
+          : masterBranch // ignore: cast_nullable_to_non_nullable
+              as String,
+      defaultBranch: null == defaultBranch
+          ? _value.defaultBranch
+          : defaultBranch // ignore: cast_nullable_to_non_nullable
+              as String,
       fork: null == fork
           ? _value.fork
           : fork // ignore: cast_nullable_to_non_nullable
@@ -205,10 +222,6 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
           ? _value.openIssuesCount
           : openIssuesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      masterBranch: freezed == masterBranch
-          ? _value.masterBranch
-          : masterBranch // ignore: cast_nullable_to_non_nullable
-              as String?,
       forks: null == forks
           ? _value.forks
           : forks // ignore: cast_nullable_to_non_nullable
@@ -253,6 +266,14 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as SearchResponseOwner,
+      homepage: freezed == homepage
+          ? _value.homepage
+          : homepage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mirrorUrl: freezed == mirrorUrl
+          ? _value.mirrorUrl
+          : mirrorUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       topics: null == topics
           ? _value.topics
           : topics // ignore: cast_nullable_to_non_nullable
@@ -296,6 +317,8 @@ abstract class _$$SearchResponseItemImplCopyWith<$Res>
       bool private,
       String htmlUrl,
       String? description,
+      String masterBranch,
+      String defaultBranch,
       bool fork,
       DateTime createdAt,
       DateTime updatedAt,
@@ -306,7 +329,6 @@ abstract class _$$SearchResponseItemImplCopyWith<$Res>
       String? language,
       int forksCount,
       int openIssuesCount,
-      String? masterBranch,
       int forks,
       int openIssues,
       int watchers,
@@ -318,6 +340,8 @@ abstract class _$$SearchResponseItemImplCopyWith<$Res>
       bool archived,
       SearchResponseLicense? license,
       SearchResponseOwner owner,
+      String? homepage,
+      String? mirrorUrl,
       List<String> topics});
 
   @override
@@ -343,6 +367,8 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
     Object? private = null,
     Object? htmlUrl = null,
     Object? description = freezed,
+    Object? masterBranch = null,
+    Object? defaultBranch = null,
     Object? fork = null,
     Object? createdAt = null,
     Object? updatedAt = null,
@@ -353,7 +379,6 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
     Object? language = freezed,
     Object? forksCount = null,
     Object? openIssuesCount = null,
-    Object? masterBranch = freezed,
     Object? forks = null,
     Object? openIssues = null,
     Object? watchers = null,
@@ -365,6 +390,8 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
     Object? archived = null,
     Object? license = freezed,
     Object? owner = null,
+    Object? homepage = freezed,
+    Object? mirrorUrl = freezed,
     Object? topics = null,
   }) {
     return _then(_$SearchResponseItemImpl(
@@ -392,6 +419,14 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      masterBranch: null == masterBranch
+          ? _value.masterBranch
+          : masterBranch // ignore: cast_nullable_to_non_nullable
+              as String,
+      defaultBranch: null == defaultBranch
+          ? _value.defaultBranch
+          : defaultBranch // ignore: cast_nullable_to_non_nullable
+              as String,
       fork: null == fork
           ? _value.fork
           : fork // ignore: cast_nullable_to_non_nullable
@@ -432,10 +467,6 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
           ? _value.openIssuesCount
           : openIssuesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      masterBranch: freezed == masterBranch
-          ? _value.masterBranch
-          : masterBranch // ignore: cast_nullable_to_non_nullable
-              as String?,
       forks: null == forks
           ? _value.forks
           : forks // ignore: cast_nullable_to_non_nullable
@@ -480,6 +511,14 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as SearchResponseOwner,
+      homepage: freezed == homepage
+          ? _value.homepage
+          : homepage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mirrorUrl: freezed == mirrorUrl
+          ? _value.mirrorUrl
+          : mirrorUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       topics: null == topics
           ? _value._topics
           : topics // ignore: cast_nullable_to_non_nullable
@@ -498,6 +537,8 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
       required this.private,
       required this.htmlUrl,
       required this.description,
+      required this.masterBranch,
+      required this.defaultBranch,
       required this.fork,
       required this.createdAt,
       required this.updatedAt,
@@ -508,7 +549,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
       required this.language,
       required this.forksCount,
       required this.openIssuesCount,
-      required this.masterBranch,
       required this.forks,
       required this.openIssues,
       required this.watchers,
@@ -520,6 +560,8 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
       required this.archived,
       required this.license,
       required this.owner,
+      required this.homepage,
+      required this.mirrorUrl,
       required final List<String> topics})
       : _topics = topics;
 
@@ -538,6 +580,10 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
   final String htmlUrl;
   @override
   final String? description;
+  @override
+  final String masterBranch;
+  @override
+  final String defaultBranch;
   @override
   final bool fork;
   @override
@@ -558,8 +604,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
   final int forksCount;
   @override
   final int openIssuesCount;
-  @override
-  final String? masterBranch;
   @override
   final int forks;
   @override
@@ -582,6 +626,10 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
   final SearchResponseLicense? license;
   @override
   final SearchResponseOwner owner;
+  @override
+  final String? homepage;
+  @override
+  final String? mirrorUrl;
   final List<String> _topics;
   @override
   List<String> get topics {
@@ -592,7 +640,7 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
 
   @override
   String toString() {
-    return 'SearchResponseItem(id: $id, nodeId: $nodeId, fullName: $fullName, private: $private, htmlUrl: $htmlUrl, description: $description, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, size: $size, stargazersCount: $stargazersCount, watchersCount: $watchersCount, language: $language, forksCount: $forksCount, openIssuesCount: $openIssuesCount, masterBranch: $masterBranch, forks: $forks, openIssues: $openIssues, watchers: $watchers, hasIssues: $hasIssues, hasProjects: $hasProjects, hasPages: $hasPages, hasWiki: $hasWiki, hasDownloads: $hasDownloads, archived: $archived, license: $license, owner: $owner, topics: $topics)';
+    return 'SearchResponseItem(id: $id, nodeId: $nodeId, fullName: $fullName, private: $private, htmlUrl: $htmlUrl, description: $description, masterBranch: $masterBranch, defaultBranch: $defaultBranch, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, size: $size, stargazersCount: $stargazersCount, watchersCount: $watchersCount, language: $language, forksCount: $forksCount, openIssuesCount: $openIssuesCount, forks: $forks, openIssues: $openIssues, watchers: $watchers, hasIssues: $hasIssues, hasProjects: $hasProjects, hasPages: $hasPages, hasWiki: $hasWiki, hasDownloads: $hasDownloads, archived: $archived, license: $license, owner: $owner, homepage: $homepage, mirrorUrl: $mirrorUrl, topics: $topics)';
   }
 
   @override
@@ -608,6 +656,10 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
             (identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.masterBranch, masterBranch) ||
+                other.masterBranch == masterBranch) &&
+            (identical(other.defaultBranch, defaultBranch) ||
+                other.defaultBranch == defaultBranch) &&
             (identical(other.fork, fork) || other.fork == fork) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -626,8 +678,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
                 other.forksCount == forksCount) &&
             (identical(other.openIssuesCount, openIssuesCount) ||
                 other.openIssuesCount == openIssuesCount) &&
-            (identical(other.masterBranch, masterBranch) ||
-                other.masterBranch == masterBranch) &&
             (identical(other.forks, forks) || other.forks == forks) &&
             (identical(other.openIssues, openIssues) ||
                 other.openIssues == openIssues) &&
@@ -646,6 +696,10 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
                 other.archived == archived) &&
             (identical(other.license, license) || other.license == license) &&
             (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.homepage, homepage) ||
+                other.homepage == homepage) &&
+            (identical(other.mirrorUrl, mirrorUrl) ||
+                other.mirrorUrl == mirrorUrl) &&
             const DeepCollectionEquality().equals(other._topics, _topics));
   }
 
@@ -659,6 +713,8 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
         private,
         htmlUrl,
         description,
+        masterBranch,
+        defaultBranch,
         fork,
         createdAt,
         updatedAt,
@@ -669,7 +725,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
         language,
         forksCount,
         openIssuesCount,
-        masterBranch,
         forks,
         openIssues,
         watchers,
@@ -681,6 +736,8 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
         archived,
         license,
         owner,
+        homepage,
+        mirrorUrl,
         const DeepCollectionEquality().hash(_topics)
       ]);
 
@@ -707,6 +764,8 @@ abstract class _SearchResponseItem implements SearchResponseItem {
       required final bool private,
       required final String htmlUrl,
       required final String? description,
+      required final String masterBranch,
+      required final String defaultBranch,
       required final bool fork,
       required final DateTime createdAt,
       required final DateTime updatedAt,
@@ -717,7 +776,6 @@ abstract class _SearchResponseItem implements SearchResponseItem {
       required final String? language,
       required final int forksCount,
       required final int openIssuesCount,
-      required final String? masterBranch,
       required final int forks,
       required final int openIssues,
       required final int watchers,
@@ -729,6 +787,8 @@ abstract class _SearchResponseItem implements SearchResponseItem {
       required final bool archived,
       required final SearchResponseLicense? license,
       required final SearchResponseOwner owner,
+      required final String? homepage,
+      required final String? mirrorUrl,
       required final List<String> topics}) = _$SearchResponseItemImpl;
 
   factory _SearchResponseItem.fromJson(Map<String, dynamic> json) =
@@ -746,6 +806,10 @@ abstract class _SearchResponseItem implements SearchResponseItem {
   String get htmlUrl;
   @override
   String? get description;
+  @override
+  String get masterBranch;
+  @override
+  String get defaultBranch;
   @override
   bool get fork;
   @override
@@ -766,8 +830,6 @@ abstract class _SearchResponseItem implements SearchResponseItem {
   int get forksCount;
   @override
   int get openIssuesCount;
-  @override
-  String? get masterBranch;
   @override
   int get forks;
   @override
@@ -790,6 +852,10 @@ abstract class _SearchResponseItem implements SearchResponseItem {
   SearchResponseLicense? get license;
   @override
   SearchResponseOwner get owner;
+  @override
+  String? get homepage;
+  @override
+  String? get mirrorUrl;
   @override
   List<String> get topics;
   @override

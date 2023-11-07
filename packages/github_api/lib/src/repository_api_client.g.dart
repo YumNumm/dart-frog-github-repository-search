@@ -24,9 +24,9 @@ class _RepositoryApiClient implements RepositoryApiClient {
 
   @override
   Future<SearchResponse> fetch({
-    required String accept,
-    required String userAgent,
     required String query,
+    String accept = 'application/vnd.github.v3+json',
+    String userAgent = 'dart_frog',
     String? sort,
     String? order,
     int? page,

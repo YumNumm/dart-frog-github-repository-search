@@ -1,4 +1,6 @@
-# melos_managed_dependency_overrides: bff_api_types
+# melos_managed_dependency_overrides: bff_api_types,github_api
 dependency_overrides:
   bff_api_types:
     path: ../bff_api_types
+  github_api:
+    path: ../github_api
