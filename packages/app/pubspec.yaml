@@ -9,6 +9,10 @@ environment:
   sdk: ^3.1.0
 
 dependencies:
+  bff_api_types:
+    git:
+      url: git@github.com:YumNumm/dart-frog-github-repository-search.git
+      path: packages/bff_api_types
   collection: ^1.17.2
 
   cupertino_icons: ^1.0.6
