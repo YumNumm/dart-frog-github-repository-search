@@ -13,11 +13,6 @@ Handler middleware(Handler handler) {
     try {
       return await handler
           .use(
-            provider<BffConfiguration>(
-              (context) => BffConfiguration.fromEnv(),
-            ),
-          )
-          .use(
             provider<GitHubApi>(
               (context) {
                 final config = context.read<BffConfiguration>();
@@ -26,6 +21,9 @@ Handler middleware(Handler handler) {
                     headers: {
                       HttpHeaders.authorizationHeader:
                           'Bearer ${config.githubApiToken}',
+                      HttpHeaders.acceptHeader:
+                          'application/vnd.github.v3+json',
+                      HttpHeaders.userAgentHeader: 'dart_frog',
                     },
                   ),
                 );
@@ -33,6 +31,11 @@ Handler middleware(Handler handler) {
                   dio: dio,
                 );
               },
+            ),
+          )
+          .use(
+            provider<BffConfiguration>(
+              (context) => BffConfiguration.fromEnv(),
             ),
           )
           .use(

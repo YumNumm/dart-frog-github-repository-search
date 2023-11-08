@@ -59,10 +59,6 @@ _$RepositorySearchResponseItemImpl _$$RepositorySearchResponseItemImplFromJson(
           pushedAt:
               $checkedConvert('pushed_at', (v) => DateTime.parse(v as String)),
           language: $checkedConvert('language', (v) => v as String?),
-          openIssuesCount:
-              $checkedConvert('open_issues_count', (v) => v as int),
-          masterBranch: $checkedConvert('master_branch', (v) => v as String),
-          defaultBranch: $checkedConvert('default_branch', (v) => v as String),
           forks: $checkedConvert('forks', (v) => v as int),
           openIssues: $checkedConvert('open_issues', (v) => v as int),
           watchers: $checkedConvert('watchers', (v) => v as int),
@@ -84,9 +80,6 @@ _$RepositorySearchResponseItemImpl _$$RepositorySearchResponseItemImplFromJson(
         'createdAt': 'created_at',
         'updatedAt': 'updated_at',
         'pushedAt': 'pushed_at',
-        'openIssuesCount': 'open_issues_count',
-        'masterBranch': 'master_branch',
-        'defaultBranch': 'default_branch',
         'openIssues': 'open_issues',
         'mirrorUrl': 'mirror_url'
       },
@@ -105,9 +98,6 @@ Map<String, dynamic> _$$RepositorySearchResponseItemImplToJson(
       'updated_at': instance.updatedAt.toIso8601String(),
       'pushed_at': instance.pushedAt.toIso8601String(),
       'language': instance.language,
-      'open_issues_count': instance.openIssuesCount,
-      'master_branch': instance.masterBranch,
-      'default_branch': instance.defaultBranch,
       'forks': instance.forks,
       'open_issues': instance.openIssues,
       'watchers': instance.watchers,

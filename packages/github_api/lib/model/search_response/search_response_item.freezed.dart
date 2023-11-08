@@ -26,8 +26,6 @@ mixin _$SearchResponseItem {
   bool get private => throw _privateConstructorUsedError;
   String get htmlUrl => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String get masterBranch => throw _privateConstructorUsedError;
-  String get defaultBranch => throw _privateConstructorUsedError;
   bool get fork => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
@@ -72,8 +70,6 @@ abstract class $SearchResponseItemCopyWith<$Res> {
       bool private,
       String htmlUrl,
       String? description,
-      String masterBranch,
-      String defaultBranch,
       bool fork,
       DateTime createdAt,
       DateTime updatedAt,
@@ -122,8 +118,6 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
     Object? private = null,
     Object? htmlUrl = null,
     Object? description = freezed,
-    Object? masterBranch = null,
-    Object? defaultBranch = null,
     Object? fork = null,
     Object? createdAt = null,
     Object? updatedAt = null,
@@ -174,14 +168,6 @@ class _$SearchResponseItemCopyWithImpl<$Res, $Val extends SearchResponseItem>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      masterBranch: null == masterBranch
-          ? _value.masterBranch
-          : masterBranch // ignore: cast_nullable_to_non_nullable
-              as String,
-      defaultBranch: null == defaultBranch
-          ? _value.defaultBranch
-          : defaultBranch // ignore: cast_nullable_to_non_nullable
-              as String,
       fork: null == fork
           ? _value.fork
           : fork // ignore: cast_nullable_to_non_nullable
@@ -317,8 +303,6 @@ abstract class _$$SearchResponseItemImplCopyWith<$Res>
       bool private,
       String htmlUrl,
       String? description,
-      String masterBranch,
-      String defaultBranch,
       bool fork,
       DateTime createdAt,
       DateTime updatedAt,
@@ -367,8 +351,6 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
     Object? private = null,
     Object? htmlUrl = null,
     Object? description = freezed,
-    Object? masterBranch = null,
-    Object? defaultBranch = null,
     Object? fork = null,
     Object? createdAt = null,
     Object? updatedAt = null,
@@ -419,14 +401,6 @@ class __$$SearchResponseItemImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      masterBranch: null == masterBranch
-          ? _value.masterBranch
-          : masterBranch // ignore: cast_nullable_to_non_nullable
-              as String,
-      defaultBranch: null == defaultBranch
-          ? _value.defaultBranch
-          : defaultBranch // ignore: cast_nullable_to_non_nullable
-              as String,
       fork: null == fork
           ? _value.fork
           : fork // ignore: cast_nullable_to_non_nullable
@@ -537,8 +511,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
       required this.private,
       required this.htmlUrl,
       required this.description,
-      required this.masterBranch,
-      required this.defaultBranch,
       required this.fork,
       required this.createdAt,
       required this.updatedAt,
@@ -580,10 +552,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
   final String htmlUrl;
   @override
   final String? description;
-  @override
-  final String masterBranch;
-  @override
-  final String defaultBranch;
   @override
   final bool fork;
   @override
@@ -640,7 +608,7 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
 
   @override
   String toString() {
-    return 'SearchResponseItem(id: $id, nodeId: $nodeId, fullName: $fullName, private: $private, htmlUrl: $htmlUrl, description: $description, masterBranch: $masterBranch, defaultBranch: $defaultBranch, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, size: $size, stargazersCount: $stargazersCount, watchersCount: $watchersCount, language: $language, forksCount: $forksCount, openIssuesCount: $openIssuesCount, forks: $forks, openIssues: $openIssues, watchers: $watchers, hasIssues: $hasIssues, hasProjects: $hasProjects, hasPages: $hasPages, hasWiki: $hasWiki, hasDownloads: $hasDownloads, archived: $archived, license: $license, owner: $owner, homepage: $homepage, mirrorUrl: $mirrorUrl, topics: $topics)';
+    return 'SearchResponseItem(id: $id, nodeId: $nodeId, fullName: $fullName, private: $private, htmlUrl: $htmlUrl, description: $description, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, size: $size, stargazersCount: $stargazersCount, watchersCount: $watchersCount, language: $language, forksCount: $forksCount, openIssuesCount: $openIssuesCount, forks: $forks, openIssues: $openIssues, watchers: $watchers, hasIssues: $hasIssues, hasProjects: $hasProjects, hasPages: $hasPages, hasWiki: $hasWiki, hasDownloads: $hasDownloads, archived: $archived, license: $license, owner: $owner, homepage: $homepage, mirrorUrl: $mirrorUrl, topics: $topics)';
   }
 
   @override
@@ -656,10 +624,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
             (identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.masterBranch, masterBranch) ||
-                other.masterBranch == masterBranch) &&
-            (identical(other.defaultBranch, defaultBranch) ||
-                other.defaultBranch == defaultBranch) &&
             (identical(other.fork, fork) || other.fork == fork) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -713,8 +677,6 @@ class _$SearchResponseItemImpl implements _SearchResponseItem {
         private,
         htmlUrl,
         description,
-        masterBranch,
-        defaultBranch,
         fork,
         createdAt,
         updatedAt,
@@ -764,8 +726,6 @@ abstract class _SearchResponseItem implements SearchResponseItem {
       required final bool private,
       required final String htmlUrl,
       required final String? description,
-      required final String masterBranch,
-      required final String defaultBranch,
       required final bool fork,
       required final DateTime createdAt,
       required final DateTime updatedAt,
@@ -806,10 +766,6 @@ abstract class _SearchResponseItem implements SearchResponseItem {
   String get htmlUrl;
   @override
   String? get description;
-  @override
-  String get masterBranch;
-  @override
-  String get defaultBranch;
   @override
   bool get fork;
   @override

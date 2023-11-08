@@ -1,6 +1,10 @@
 import 'package:bff_api_types/bff_api_types.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:github_api/github_api.dart';
+import 'package:github_api/model/search_response.dart';
+import 'package:github_api/model/search_response/search_response_item.dart';
+import 'package:github_api/model/search_response/search_response_owner.dart';
+import 'package:github_api/repository_search_api_client.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -12,14 +16,15 @@ class _MockUri extends Mock implements Uri {}
 
 class _MockGitHubApi extends Mock implements GitHubApi {}
 
-class _MockRepositoryApiClient extends Mock implements RepositoryApiClient {}
+class _MockRepositoryApiClient extends Mock
+    implements RepositorySearchApiClient {}
 
 void main() {
   late RequestContext context;
   late Request request;
   late Uri uri;
   late GitHubApi gitHubApi;
-  late RepositoryApiClient repositoryApiClient;
+  late RepositorySearchApiClient repositoryApiClient;
 
   const req = RepositorySearchRequest(
     query: 'test',
@@ -46,7 +51,7 @@ void main() {
         (_) async => req.toJson(),
       );
       when(
-        () => repositoryApiClient.fetch(
+        () => repositoryApiClient.search(
           query: any(named: 'query'),
         ),
       ).thenAnswer(
@@ -83,8 +88,6 @@ void main() {
                   ),
                   createdAt: DateTime.now(),
                   description: 'test',
-                  defaultBranch: 'test',
-                  masterBranch: 'test',
                   fork: false,
                   forks: 1,
                   fullName: 'test',

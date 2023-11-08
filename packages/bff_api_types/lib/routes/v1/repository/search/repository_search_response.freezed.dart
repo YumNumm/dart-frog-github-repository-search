@@ -203,9 +203,6 @@ mixin _$RepositorySearchResponseItem {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   DateTime get pushedAt => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
-  int get openIssuesCount => throw _privateConstructorUsedError;
-  String get masterBranch => throw _privateConstructorUsedError;
-  String get defaultBranch => throw _privateConstructorUsedError;
   int get forks => throw _privateConstructorUsedError;
   int get openIssues => throw _privateConstructorUsedError;
   int get watchers => throw _privateConstructorUsedError;
@@ -239,9 +236,6 @@ abstract class $RepositorySearchResponseItemCopyWith<$Res> {
       DateTime updatedAt,
       DateTime pushedAt,
       String? language,
-      int openIssuesCount,
-      String masterBranch,
-      String defaultBranch,
       int forks,
       int openIssues,
       int watchers,
@@ -277,9 +271,6 @@ class _$RepositorySearchResponseItemCopyWithImpl<$Res,
     Object? updatedAt = null,
     Object? pushedAt = null,
     Object? language = freezed,
-    Object? openIssuesCount = null,
-    Object? masterBranch = null,
-    Object? defaultBranch = null,
     Object? forks = null,
     Object? openIssues = null,
     Object? watchers = null,
@@ -328,18 +319,6 @@ class _$RepositorySearchResponseItemCopyWithImpl<$Res,
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
-      openIssuesCount: null == openIssuesCount
-          ? _value.openIssuesCount
-          : openIssuesCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      masterBranch: null == masterBranch
-          ? _value.masterBranch
-          : masterBranch // ignore: cast_nullable_to_non_nullable
-              as String,
-      defaultBranch: null == defaultBranch
-          ? _value.defaultBranch
-          : defaultBranch // ignore: cast_nullable_to_non_nullable
-              as String,
       forks: null == forks
           ? _value.forks
           : forks // ignore: cast_nullable_to_non_nullable
@@ -414,9 +393,6 @@ abstract class _$$RepositorySearchResponseItemImplCopyWith<$Res>
       DateTime updatedAt,
       DateTime pushedAt,
       String? language,
-      int openIssuesCount,
-      String masterBranch,
-      String defaultBranch,
       int forks,
       int openIssues,
       int watchers,
@@ -453,9 +429,6 @@ class __$$RepositorySearchResponseItemImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? pushedAt = null,
     Object? language = freezed,
-    Object? openIssuesCount = null,
-    Object? masterBranch = null,
-    Object? defaultBranch = null,
     Object? forks = null,
     Object? openIssues = null,
     Object? watchers = null,
@@ -504,18 +477,6 @@ class __$$RepositorySearchResponseItemImplCopyWithImpl<$Res>
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
-      openIssuesCount: null == openIssuesCount
-          ? _value.openIssuesCount
-          : openIssuesCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      masterBranch: null == masterBranch
-          ? _value.masterBranch
-          : masterBranch // ignore: cast_nullable_to_non_nullable
-              as String,
-      defaultBranch: null == defaultBranch
-          ? _value.defaultBranch
-          : defaultBranch // ignore: cast_nullable_to_non_nullable
-              as String,
       forks: null == forks
           ? _value.forks
           : forks // ignore: cast_nullable_to_non_nullable
@@ -559,9 +520,6 @@ class _$RepositorySearchResponseItemImpl
       required this.updatedAt,
       required this.pushedAt,
       required this.language,
-      required this.openIssuesCount,
-      required this.masterBranch,
-      required this.defaultBranch,
       required this.forks,
       required this.openIssues,
       required this.watchers,
@@ -595,12 +553,6 @@ class _$RepositorySearchResponseItemImpl
   @override
   final String? language;
   @override
-  final int openIssuesCount;
-  @override
-  final String masterBranch;
-  @override
-  final String defaultBranch;
-  @override
   final int forks;
   @override
   final int openIssues;
@@ -621,7 +573,7 @@ class _$RepositorySearchResponseItemImpl
 
   @override
   String toString() {
-    return 'RepositorySearchResponseItem(fullName: $fullName, owner: $owner, private: $private, htmlUrl: $htmlUrl, description: $description, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, language: $language, openIssuesCount: $openIssuesCount, masterBranch: $masterBranch, defaultBranch: $defaultBranch, forks: $forks, openIssues: $openIssues, watchers: $watchers, topics: $topics, mirrorUrl: $mirrorUrl, license: $license)';
+    return 'RepositorySearchResponseItem(fullName: $fullName, owner: $owner, private: $private, htmlUrl: $htmlUrl, description: $description, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, language: $language, forks: $forks, openIssues: $openIssues, watchers: $watchers, topics: $topics, mirrorUrl: $mirrorUrl, license: $license)';
   }
 
   @override
@@ -645,12 +597,6 @@ class _$RepositorySearchResponseItemImpl
                 other.pushedAt == pushedAt) &&
             (identical(other.language, language) ||
                 other.language == language) &&
-            (identical(other.openIssuesCount, openIssuesCount) ||
-                other.openIssuesCount == openIssuesCount) &&
-            (identical(other.masterBranch, masterBranch) ||
-                other.masterBranch == masterBranch) &&
-            (identical(other.defaultBranch, defaultBranch) ||
-                other.defaultBranch == defaultBranch) &&
             (identical(other.forks, forks) || other.forks == forks) &&
             (identical(other.openIssues, openIssues) ||
                 other.openIssues == openIssues) &&
@@ -664,28 +610,24 @@ class _$RepositorySearchResponseItemImpl
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        fullName,
-        owner,
-        private,
-        htmlUrl,
-        description,
-        fork,
-        createdAt,
-        updatedAt,
-        pushedAt,
-        language,
-        openIssuesCount,
-        masterBranch,
-        defaultBranch,
-        forks,
-        openIssues,
-        watchers,
-        const DeepCollectionEquality().hash(_topics),
-        mirrorUrl,
-        license
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      fullName,
+      owner,
+      private,
+      htmlUrl,
+      description,
+      fork,
+      createdAt,
+      updatedAt,
+      pushedAt,
+      language,
+      forks,
+      openIssues,
+      watchers,
+      const DeepCollectionEquality().hash(_topics),
+      mirrorUrl,
+      license);
 
   @JsonKey(ignore: true)
   @override
@@ -716,9 +658,6 @@ abstract class _RepositorySearchResponseItem
           required final DateTime updatedAt,
           required final DateTime pushedAt,
           required final String? language,
-          required final int openIssuesCount,
-          required final String masterBranch,
-          required final String defaultBranch,
           required final int forks,
           required final int openIssues,
           required final int watchers,
@@ -750,12 +689,6 @@ abstract class _RepositorySearchResponseItem
   DateTime get pushedAt;
   @override
   String? get language;
-  @override
-  int get openIssuesCount;
-  @override
-  String get masterBranch;
-  @override
-  String get defaultBranch;
   @override
   int get forks;
   @override

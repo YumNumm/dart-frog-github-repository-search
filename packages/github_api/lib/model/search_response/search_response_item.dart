@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:github_api/github_api.dart';
+import 'package:github_api/model/search_response/search_response_license.dart';
+import 'package:github_api/model/search_response/search_response_owner.dart';
 
 part 'search_response_item.freezed.dart';
 part 'search_response_item.g.dart';
@@ -13,8 +14,6 @@ class SearchResponseItem with _$SearchResponseItem {
     required bool private,
     required String htmlUrl,
     required String? description,
-    required String masterBranch,
-    required String defaultBranch,
     required bool fork,
     required DateTime createdAt,
     required DateTime updatedAt,
