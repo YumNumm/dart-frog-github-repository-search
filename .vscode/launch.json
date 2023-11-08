@@ -2,24 +2,27 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "github-repository-search ",
+      "name": "github-repository-search",
       "request": "launch",
       "type": "dart",
-      "cwd": "package/app"
+      "cwd": "packages/app",
+      "program": "lib/main.dart"
     },
     {
       "name": "github-repository-search (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile",
-      "cwd": "package/app"
+      "cwd": "packages/app",
+      "program": "lib/main.dart"
     },
     {
       "name": "github-repository-search (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
-      "cwd": "package/app"
+      "cwd": "packages/app",
+      "program": "lib/main.dart"
     }
   ]
 }
