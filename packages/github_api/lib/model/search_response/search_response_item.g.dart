@@ -35,7 +35,6 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
           forksCount: $checkedConvert('forks_count', (v) => v as int),
           openIssuesCount:
               $checkedConvert('open_issues_count', (v) => v as int),
-          masterBranch: $checkedConvert('master_branch', (v) => v as String?),
           forks: $checkedConvert('forks', (v) => v as int),
           openIssues: $checkedConvert('open_issues', (v) => v as int),
           watchers: $checkedConvert('watchers', (v) => v as int),
@@ -52,6 +51,8 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
                   : SearchResponseLicense.fromJson(v as Map<String, dynamic>)),
           owner: $checkedConvert('owner',
               (v) => SearchResponseOwner.fromJson(v as Map<String, dynamic>)),
+          homepage: $checkedConvert('homepage', (v) => v as String?),
+          mirrorUrl: $checkedConvert('mirror_url', (v) => v as String?),
           topics: $checkedConvert('topics',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
         );
@@ -68,13 +69,13 @@ _$SearchResponseItemImpl _$$SearchResponseItemImplFromJson(
         'watchersCount': 'watchers_count',
         'forksCount': 'forks_count',
         'openIssuesCount': 'open_issues_count',
-        'masterBranch': 'master_branch',
         'openIssues': 'open_issues',
         'hasIssues': 'has_issues',
         'hasProjects': 'has_projects',
         'hasPages': 'has_pages',
         'hasWiki': 'has_wiki',
-        'hasDownloads': 'has_downloads'
+        'hasDownloads': 'has_downloads',
+        'mirrorUrl': 'mirror_url'
       },
     );
 
@@ -97,7 +98,6 @@ Map<String, dynamic> _$$SearchResponseItemImplToJson(
       'language': instance.language,
       'forks_count': instance.forksCount,
       'open_issues_count': instance.openIssuesCount,
-      'master_branch': instance.masterBranch,
       'forks': instance.forks,
       'open_issues': instance.openIssues,
       'watchers': instance.watchers,
@@ -109,5 +109,7 @@ Map<String, dynamic> _$$SearchResponseItemImplToJson(
       'archived': instance.archived,
       'license': instance.license,
       'owner': instance.owner,
+      'homepage': instance.homepage,
+      'mirror_url': instance.mirrorUrl,
       'topics': instance.topics,
     };

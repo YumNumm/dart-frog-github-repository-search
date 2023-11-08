@@ -23,29 +23,16 @@ class RepositorySearchResponseItem with _$RepositorySearchResponseItem {
     required String htmlUrl,
     String? description,
     required bool fork,
-    required String url,
     required DateTime createdAt,
     required DateTime updatedAt,
     required DateTime pushedAt,
-    required String? homepage,
     required String? language,
-    required int openIssuesCount,
-    required String masterBranch,
-    required String defaultBranch,
-    required int score,
     required int forks,
     required int openIssues,
     required int watchers,
     required List<String> topics,
     required String? mirrorUrl,
-    required bool archived,
-
-    /// Returns whether or not this repository disabled.
-    required bool disabled,
-
-    /// The repository visibility: public, private, or internal.
-    required String visibility,
-    List<dynamic>? license,
+    RepositorySearchResponseLicense? license,
   }) = _RepositorySearchResponseItem;
 
   factory RepositorySearchResponseItem.fromJson(Map<String, dynamic> json) =>
@@ -55,7 +42,6 @@ class RepositorySearchResponseItem with _$RepositorySearchResponseItem {
 @freezed
 class RepositorySearchResponseOwnder with _$RepositorySearchResponseOwnder {
   const factory RepositorySearchResponseOwnder({
-    required String? name,
     required String login,
     required String avatarUrl,
     required String url,
@@ -70,7 +56,7 @@ class RepositorySearchResponseLicense with _$RepositorySearchResponseLicense {
   const factory RepositorySearchResponseLicense({
     required String key,
     required String name,
-    required String htmlUrl,
+    required String? url,
   }) = _RepositorySearchResponseLicense;
 
   factory RepositorySearchResponseLicense.fromJson(Map<String, dynamic> json) =>

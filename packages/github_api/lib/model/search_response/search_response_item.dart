@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:github_api/github_api.dart';
+import 'package:github_api/model/search_response/search_response_license.dart';
+import 'package:github_api/model/search_response/search_response_owner.dart';
 
 part 'search_response_item.freezed.dart';
 part 'search_response_item.g.dart';
@@ -23,7 +24,6 @@ class SearchResponseItem with _$SearchResponseItem {
     required String? language,
     required int forksCount,
     required int openIssuesCount,
-    required String? masterBranch,
     required int forks,
     required int openIssues,
     required int watchers,
@@ -35,6 +35,8 @@ class SearchResponseItem with _$SearchResponseItem {
     required bool archived,
     required SearchResponseLicense? license,
     required SearchResponseOwner owner,
+    required String? homepage,
+    required String? mirrorUrl,
     required List<String> topics,
   }) = _SearchResponseItem;
 

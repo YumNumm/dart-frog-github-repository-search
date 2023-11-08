@@ -52,30 +52,25 @@ _$RepositorySearchResponseItemImpl _$$RepositorySearchResponseItemImplFromJson(
           htmlUrl: $checkedConvert('html_url', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String?),
           fork: $checkedConvert('fork', (v) => v as bool),
-          url: $checkedConvert('url', (v) => v as String),
           createdAt:
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
           updatedAt:
               $checkedConvert('updated_at', (v) => DateTime.parse(v as String)),
           pushedAt:
               $checkedConvert('pushed_at', (v) => DateTime.parse(v as String)),
-          homepage: $checkedConvert('homepage', (v) => v as String?),
           language: $checkedConvert('language', (v) => v as String?),
-          openIssuesCount:
-              $checkedConvert('open_issues_count', (v) => v as int),
-          masterBranch: $checkedConvert('master_branch', (v) => v as String),
-          defaultBranch: $checkedConvert('default_branch', (v) => v as String),
-          score: $checkedConvert('score', (v) => v as int),
           forks: $checkedConvert('forks', (v) => v as int),
           openIssues: $checkedConvert('open_issues', (v) => v as int),
           watchers: $checkedConvert('watchers', (v) => v as int),
           topics: $checkedConvert('topics',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
           mirrorUrl: $checkedConvert('mirror_url', (v) => v as String?),
-          archived: $checkedConvert('archived', (v) => v as bool),
-          disabled: $checkedConvert('disabled', (v) => v as bool),
-          visibility: $checkedConvert('visibility', (v) => v as String),
-          license: $checkedConvert('license', (v) => v as List<dynamic>?),
+          license: $checkedConvert(
+              'license',
+              (v) => v == null
+                  ? null
+                  : RepositorySearchResponseLicense.fromJson(
+                      v as Map<String, dynamic>)),
         );
         return val;
       },
@@ -85,9 +80,6 @@ _$RepositorySearchResponseItemImpl _$$RepositorySearchResponseItemImplFromJson(
         'createdAt': 'created_at',
         'updatedAt': 'updated_at',
         'pushedAt': 'pushed_at',
-        'openIssuesCount': 'open_issues_count',
-        'masterBranch': 'master_branch',
-        'defaultBranch': 'default_branch',
         'openIssues': 'open_issues',
         'mirrorUrl': 'mirror_url'
       },
@@ -102,24 +94,15 @@ Map<String, dynamic> _$$RepositorySearchResponseItemImplToJson(
       'html_url': instance.htmlUrl,
       'description': instance.description,
       'fork': instance.fork,
-      'url': instance.url,
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt.toIso8601String(),
       'pushed_at': instance.pushedAt.toIso8601String(),
-      'homepage': instance.homepage,
       'language': instance.language,
-      'open_issues_count': instance.openIssuesCount,
-      'master_branch': instance.masterBranch,
-      'default_branch': instance.defaultBranch,
-      'score': instance.score,
       'forks': instance.forks,
       'open_issues': instance.openIssues,
       'watchers': instance.watchers,
       'topics': instance.topics,
       'mirror_url': instance.mirrorUrl,
-      'archived': instance.archived,
-      'disabled': instance.disabled,
-      'visibility': instance.visibility,
       'license': instance.license,
     };
 
@@ -130,7 +113,6 @@ _$RepositorySearchResponseOwnderImpl
           json,
           ($checkedConvert) {
             final val = _$RepositorySearchResponseOwnderImpl(
-              name: $checkedConvert('name', (v) => v as String?),
               login: $checkedConvert('login', (v) => v as String),
               avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
               url: $checkedConvert('url', (v) => v as String),
@@ -143,7 +125,6 @@ _$RepositorySearchResponseOwnderImpl
 Map<String, dynamic> _$$RepositorySearchResponseOwnderImplToJson(
         _$RepositorySearchResponseOwnderImpl instance) =>
     <String, dynamic>{
-      'name': instance.name,
       'login': instance.login,
       'avatar_url': instance.avatarUrl,
       'url': instance.url,
@@ -158,11 +139,10 @@ _$RepositorySearchResponseLicenseImpl
             final val = _$RepositorySearchResponseLicenseImpl(
               key: $checkedConvert('key', (v) => v as String),
               name: $checkedConvert('name', (v) => v as String),
-              htmlUrl: $checkedConvert('html_url', (v) => v as String),
+              url: $checkedConvert('url', (v) => v as String?),
             );
             return val;
           },
-          fieldKeyMap: const {'htmlUrl': 'html_url'},
         );
 
 Map<String, dynamic> _$$RepositorySearchResponseLicenseImplToJson(
@@ -170,5 +150,5 @@ Map<String, dynamic> _$$RepositorySearchResponseLicenseImplToJson(
     <String, dynamic>{
       'key': instance.key,
       'name': instance.name,
-      'html_url': instance.htmlUrl,
+      'url': instance.url,
     };

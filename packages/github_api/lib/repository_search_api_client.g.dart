@@ -2,7 +2,7 @@
 
 // ignore_for_file: type=lint
 
-part of 'repository_api_client.dart';
+part of 'repository_search_api_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -10,8 +10,8 @@ part of 'repository_api_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _RepositoryApiClient implements RepositoryApiClient {
-  _RepositoryApiClient(
+class _RepositorySearchApiClient implements RepositorySearchApiClient {
+  _RepositorySearchApiClient(
     this._dio, {
     this.baseUrl,
   }) {
@@ -23,9 +23,7 @@ class _RepositoryApiClient implements RepositoryApiClient {
   String? baseUrl;
 
   @override
-  Future<SearchResponse> fetch({
-    required String accept,
-    required String userAgent,
+  Future<SearchResponse> search({
     required String query,
     String? sort,
     String? order,
@@ -41,11 +39,7 @@ class _RepositoryApiClient implements RepositoryApiClient {
       r'per_page': perPage,
     };
     queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{
-      r'accept': accept,
-      r'User-Agent': userAgent,
-    };
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<SearchResponse>(Options(
