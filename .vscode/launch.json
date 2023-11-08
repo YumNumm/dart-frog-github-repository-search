@@ -1,25 +1,25 @@
 {
-  // IntelliSense を使用して利用可能な属性を学べます。
-  // 既存の属性の説明をホバーして表示します。
-  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "flutter-engineer-codecheck",
-      "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "flutter-engineer-codecheck (profile mode)",
+      "name": "github-repository-search ",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "profile"
+      "cwd": "package/app"
     },
     {
-      "name": "flutter-engineer-codecheck (release mode)",
+      "name": "github-repository-search (profile mode)",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "release"
+      "flutterMode": "profile",
+      "cwd": "package/app"
+    },
+    {
+      "name": "github-repository-search (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "cwd": "package/app"
     }
   ]
 }
