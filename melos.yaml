@@ -19,7 +19,7 @@ scripts:
        - Note: you can also rely on your IDEs Dart Analysis / Issues window.
 
   build_runner:
-    exec: dart pub run build_runner build -d
+    run: melos exec -c 1 -- "flutter pub run build_runner build -d"
     packageFilters:
       dependsOn: build_runner
 
