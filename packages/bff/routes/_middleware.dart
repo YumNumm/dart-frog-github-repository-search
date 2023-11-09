@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bff_api_types/bff_api_types.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:github_api/github_api.dart';
+import 'package:shelf_cors_headers/shelf_cors_headers.dart' as shelf;
 
 import '../src/error/api_error.dart';
 import '../src/util/method_check.dart';
@@ -19,6 +20,16 @@ Handler middleware(Handler handler) {
           )
           .use(
             requestLogger(),
+          )
+          .use(
+            fromShelfMiddleware(
+              shelf.corsHeaders(
+                headers: {
+                  shelf.ACCESS_CONTROL_ALLOW_ORIGIN:
+                      'https://gh-repo-search.yumnumm.dev',
+                },
+              ),
+            ),
           )
           .call(context);
     } on MethodNotAllowedException catch (exception) {

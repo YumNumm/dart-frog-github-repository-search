@@ -16,6 +16,7 @@ dependencies:
     git:
       url: git@github.com:YumNumm/dart-frog-github-repository-search.git
       path: packages/github_api
+  shelf_cors_headers: ^0.1.5
 
 dev_dependencies:
   mocktail: ^1.0.0
