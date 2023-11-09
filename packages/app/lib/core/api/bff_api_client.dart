@@ -17,7 +17,7 @@ abstract class BffApiClient {
   // 認証なしなので、1分あたり10回までリクエスト可能
   // OAuth認証を使うと、1分あたり30回までリクエスト可能
   // https://docs.github.com/en/rest/search#rate-limit
-  @GET('/search/repositories')
+  @GET('/repository/search')
   Future<RepositorySearchResponse> search({
     /// application/vnd.github+json
     @Header('accept') String accept = 'application/vnd.github.v3+json',
