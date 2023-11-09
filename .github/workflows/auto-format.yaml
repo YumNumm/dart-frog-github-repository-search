@@ -37,8 +37,17 @@ jobs:
       - name: Flutter version
         run: flutter --version
 
-      - name: Format
-        run: flutter format $FORMAT_PATHS
+      - name: Install dependencies
+        run: dart pub get
+        
+      - name: Install Melos
+        run: dart pub global activate melos && melos bootstrap
+
+      - name: build_runner
+        run: melos run build_runner
+
+      - name: format
+        run: melos run format
 
       # 変更が発生した場合は プルリクエストを作成
       - name: Create pull request

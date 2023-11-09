@@ -1,3 +1,4 @@
+import 'package:bff_api_types/bff_api_types.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:github_repository_search/core/i18n/strings.g.dart';
@@ -5,7 +6,7 @@ import 'package:github_repository_search/features/search/ui/component/repository
 import 'package:intl/intl.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
-import '../../../../ui/page/component/language_icon.dart';
+import '../../../settings/component/language_icon.dart';
 
 class RepositoryItemWidget extends StatelessWidget {
   const RepositoryItemWidget({
@@ -14,7 +15,7 @@ class RepositoryItemWidget extends StatelessWidget {
     required this.term,
   });
 
-  final Repository item;
+  final RepositorySearchResponseItem item;
   final String term;
 
   @override
@@ -32,7 +33,13 @@ class RepositoryItemWidget extends StatelessWidget {
 
     final controller = ExpandableController(initialExpanded: false);
     final numberFormatter = NumberFormat('#,###');
-
+    final owner = item.owner;
+    final leading = owner != null
+        ? CircleAvatar(
+            backgroundImage: NetworkImage(owner.avatarUrl),
+            backgroundColor: Colors.transparent,
+          )
+        : null;
     final header = ListTile(
       onTap: controller.toggle,
       title: title,
@@ -48,7 +55,7 @@ class RepositoryItemWidget extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                numberFormatter.format(item.stargazersCount),
+                numberFormatter.format(item.stars),
                 style: theme.textTheme.bodyMedium,
               ),
               const SizedBox(width: 2),
@@ -72,10 +79,7 @@ class RepositoryItemWidget extends StatelessWidget {
             ),
         ],
       ),
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(item.owner.avatarUrl),
-        backgroundColor: Colors.transparent,
-      ),
+      leading: leading,
     );
 
     return ExpandablePanel(
@@ -111,7 +115,7 @@ class RepositoryDetailWidget extends StatelessWidget {
   });
 
   final ListTile header;
-  final SearchResponseItem item;
+  final RepositorySearchResponseItem item;
   final ExpandableController controller;
 
   ///
@@ -161,7 +165,7 @@ class RepositoryDetailWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          numberFormatter.format(item.watchersCount),
+                          numberFormatter.format(item.watchers),
                           style: theme.textTheme.bodyMedium,
                         ),
                         const SizedBox(width: 2),
@@ -183,7 +187,7 @@ class RepositoryDetailWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          numberFormatter.format(item.forksCount),
+                          numberFormatter.format(item.forks),
                           style: theme.textTheme.bodyMedium,
                         ),
                         const SizedBox(width: 2),
@@ -205,7 +209,7 @@ class RepositoryDetailWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          numberFormatter.format(item.openIssuesCount),
+                          numberFormatter.format(item.openIssues),
                           style: theme.textTheme.bodyMedium,
                         ),
                         const SizedBox(width: 2),
@@ -286,7 +290,7 @@ class RepositoryDetailWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          item.owner.login,
+                          item.owner?.login ?? '',
                           style: theme.textTheme.bodyMedium,
                         ),
                       ],

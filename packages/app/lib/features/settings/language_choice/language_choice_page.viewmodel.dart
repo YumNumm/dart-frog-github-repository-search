@@ -1,9 +1,8 @@
-import 'package:flutter/painting.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../i18n/strings.g.dart';
-import '../../../provider/shared_preferences.dart';
+import '../../../core/provider/shared_preferences.dart';
 
 final languageProvider = StateNotifierProvider<LanguageNotifier, AppLocale>(
   LanguageNotifier.new,
@@ -39,10 +38,6 @@ class LanguageNotifier extends StateNotifier<AppLocale> {
     await ref
         .read(sharedPreferencesProvider)
         .setString(languagePrefsKey, languageCode);
-  }
-
-  List<Locale> get supportedLocales {
-    return LocaleSettings.supportedLocales;
   }
 }
 

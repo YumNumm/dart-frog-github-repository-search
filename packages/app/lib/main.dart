@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:github_repository_search/core/provider/language_colors.dart';
+import 'package:github_repository_search/features/settings/language_choice/language_choice_page.viewmodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/app.dart';
 import 'core/i18n/strings.g.dart';
+import 'core/provider/shared_preferences.dart';
 // ignore: depend_on_referenced_packages
 
-import 'provider/language_colors.dart';
-import 'provider/shared_preferences.dart';
-import 'ui/app.dart';
-import 'ui/page/setting_view/language_choice_page.viewmodel.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

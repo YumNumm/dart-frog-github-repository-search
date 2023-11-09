@@ -1,10 +1,12 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
+import 'package:github_repository_search/core/provider/setting/theme_provider.dart';
+import 'package:github_repository_search/core/router/router.dart';
+import 'package:github_repository_search/core/theme/theme.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../core/theme/theme.dart';
-import '../provider/setting/theme_provider.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});
@@ -22,9 +24,8 @@ class App extends ConsumerWidget {
             darkTheme(themeModeProvider.useDynamicColor ? darkDynamic : null),
         themeMode: themeModeProvider.themeMode,
         locale: TranslationProvider.of(context).flutterLocale,
-        supportedLocales: LocaleSettings.supportedLocales,
+        supportedLocales: AppLocaleUtils.supportedLocales,
         localizationsDelegates: GlobalMaterialLocalizations.delegates,
-        useInheritedMediaQuery: true,
         routerDelegate: router.routerDelegate,
         routeInformationParser: router.routeInformationParser,
         routeInformationProvider: router.routeInformationProvider,

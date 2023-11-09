@@ -13,8 +13,12 @@ class RepositorySearchRequest with _$RepositorySearchRequest {
     @Default(RepositorySearchRequestOrder.desc)
     RepositorySearchRequestOrder? order,
     // max 100
-    @Default(30) int? perPage,
-    @Default(1) int? page,
+    @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
+    @Default(30)
+    int? perPage,
+    @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
+    @Default(1)
+    int? page,
   }) = _RepositorySearchRequest;
 
   factory RepositorySearchRequest.fromJson(Map<String, dynamic> json) =>
@@ -40,3 +44,7 @@ enum RepositorySearchRequestOrder {
   asc,
   ;
 }
+
+int? _intNullableFromJson(String? json) => int.tryParse(json ?? '');
+
+String? _intNullableToJson(int? value) => value?.toString();

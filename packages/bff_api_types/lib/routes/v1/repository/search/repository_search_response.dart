@@ -30,6 +30,7 @@ class RepositorySearchResponseItem with _$RepositorySearchResponseItem {
     required int forks,
     required int openIssues,
     required int watchers,
+    required int stars,
     required List<String> topics,
     required String? mirrorUrl,
     RepositorySearchResponseLicense? license,

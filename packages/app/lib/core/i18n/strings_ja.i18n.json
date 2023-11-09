@@ -52,7 +52,7 @@
     "language": "言語",
     "license": "ライセンス",
     "lastUpdated": "最終更新",
-    "goToRepository": "レポジトリを開く",
+    "goToRepository": "リポジトリを開く",
     "createdAt": "$dateに作成",
     "updatedAt": "$dateに最終更新",
     "cannotLaunchUrl": "URLを開けませんでした($url)"

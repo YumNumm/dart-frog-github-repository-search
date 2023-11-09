@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../i18n/strings.g.dart';
 import 'language_choice_page.viewmodel.dart';
 
 class LanguageChoicePage extends HookConsumerWidget {
@@ -10,6 +10,7 @@ class LanguageChoicePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLanguage = ref.watch(languageProvider);
+    final locales = AppLocaleUtils.supportedLocalesRaw;
 
     return Scaffold(
       appBar: AppBar(
@@ -21,9 +22,9 @@ class LanguageChoicePage extends HookConsumerWidget {
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: LocaleSettings.supportedLocalesRaw.length,
+            itemCount: locales.length,
             itemBuilder: (context, index) {
-              final lang = LocaleSettings.supportedLocalesRaw[index];
+              final lang = locales[index];
               return RadioListTile<String>(
                 title: Text(t.locales[lang]!),
                 value: lang,

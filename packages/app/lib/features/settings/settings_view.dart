@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
+import 'package:github_repository_search/core/provider/setting/theme_provider.dart';
+import 'package:github_repository_search/core/router/router.dart';
+import 'package:github_repository_search/features/settings/component/setting/custom_switch.dart';
+import 'package:github_repository_search/features/settings/component/setting/setting_section.dart';
+import 'package:github_repository_search/features/settings/theme_choice/theme_choice_page.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../i18n/strings.g.dart';
-import '../../../provider/setting/theme_provider.dart';
-import '../../router.dart';
-import '../component/setting/custom_switch.dart';
-import '../component/setting/setting_section.dart';
 import 'settings_view.viewmodel.dart';
-import 'theme_choice_page.dart';
 
 class SettingView extends ConsumerWidget {
   const SettingView({super.key});
@@ -53,7 +54,7 @@ class SettingView extends ConsumerWidget {
                     currentTheme.themeMode.i18nName,
                     style: descriptionTextStyle,
                   ),
-                  onTap: () => const ThemeChoiceRoute().push(context),
+                  onTap: () => const ThemeChoiceRoute().push<void>(context),
                 ),
                 // Material Youの切り替え
                 isMaterialYouSupported.when<Widget>(
@@ -101,7 +102,21 @@ class SettingView extends ConsumerWidget {
                               style: descriptionTextStyle,
                             ),
                           ),
-                  onTap: () => const LanguageChoiceRoute().push(context),
+                  onTap: () => const LanguageChoiceRoute().push<void>(context),
+                ),
+              ],
+            ),
+            SettingsSection(
+              title: 'BFF Endpoint',
+              children: [
+                ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  title: const Text('BFF Endpoint Selector'),
+                  onTap: () =>
+                      context.push(const BffEndpointChoiceRoute().location),
                 ),
               ],
             ),

@@ -26,6 +26,7 @@ extension SearchResponseEx on SearchResponse {
               pushedAt: e.pushedAt,
               topics: e.topics,
               updatedAt: e.updatedAt,
+              stars: e.stargazersCount,
               watchers: e.watchers,
               license: e.license != null
                   ? types.RepositorySearchResponseLicense(

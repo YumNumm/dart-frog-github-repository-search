@@ -1,13 +1,11 @@
-import 'dart:developer';
-
+import 'package:bff_api_types/bff_api_types.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_repository_search/core/i18n/strings.g.dart';
+import 'package:github_repository_search/features/search/ui/component/repository_item_widget.dart';
+import 'package:github_repository_search/features/search/ui/search_page_view_model.dart';
 import 'package:lottie/lottie.dart';
-
-import '../search_view.viewmodel.dart';
-import 'repository_item_widget.dart';
 
 class RepositorySearchList extends ConsumerWidget {
   const RepositorySearchList({
@@ -16,19 +14,25 @@ class RepositorySearchList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(repositorySearchViewModel);
-
-    return data.when<Widget>(
-      data: (items) {
-        return NotificationListener<ScrollEndNotification>(
-          onNotification: (notification) => ref
-              .read(repositorySearchViewModel.notifier)
-              .onNotification(notification),
+    final state = ref.watch(repositorySearchViewModelProvider);
+    return switch (state) {
+      AsyncData<List<RepositorySearchResponseItem>>(value: final data) =>
+        NotificationListener<ScrollEndNotification>(
+          onNotification: (notification) {
+            // 画面全体の0.9までスクロールしたら次のページを読み込む
+            if (notification.metrics.pixels >=
+                notification.metrics.maxScrollExtent * 0.9) {
+              ref.read(repositorySearchViewModelProvider.notifier).fetch(
+                    fetchMore: true,
+                  );
+            }
+            return true;
+          },
           child: Scrollbar(
             child: ListView.builder(
-              itemCount: items.length + (data.isLoading ? 1 : 0),
+              itemCount: data.length + (state.isLoading ? 1 : 0),
               itemBuilder: (context, index) {
-                if (index == items.length) {
+                if (index == data.length) {
                   // InfiniteScroll Indicator
                   return const Padding(
                     padding: EdgeInsets.symmetric(vertical: 32),
@@ -37,23 +41,45 @@ class RepositorySearchList extends ConsumerWidget {
                     ),
                   );
                 }
-                final item = items[index];
+                final item = data[index];
                 return RepositoryItemWidget(
                   item: item,
-                  term: ref.watch(searchRepositoryNameProvider) ?? '',
+                  term: ref.watch(repositorySearchQueryProvider) ?? '',
                 );
               },
             ),
           ),
-        );
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator.adaptive(),
-      ),
-      error: (error, stack) {
-        return RepositorySearchErrorWidget(error);
-      },
-    );
+        ),
+      AsyncLoading() => const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
+      AsyncError(:final error) when state.hasValue => () {
+          final data = state.valueOrNull!;
+          return Scrollbar(
+            child: ListView.builder(
+              itemCount: data.length + 1,
+              itemBuilder: (context, index) {
+                if (index >= data.length) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 32,
+                    ),
+                    child: RepositorySearchErrorWidget(error),
+                  );
+                }
+                final item = data[index];
+                return RepositoryItemWidget(
+                  item: item,
+                  term: ref.watch(repositorySearchQueryProvider) ?? '',
+                );
+              },
+            ),
+          );
+        }(),
+      AsyncError(:final error) => RepositorySearchErrorWidget(error),
+      _ => const SizedBox.shrink()
+    };
   }
 }
 
@@ -66,60 +92,60 @@ class RepositorySearchErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (error.runtimeType == DioException) {
-      final dioError = error as DioException;
-      log(dioError.type.toString());
-      return SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            LottieBuilder.asset(
-              'assets/75279-error.json',
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: () {
-                switch (dioError.type) {
-                  case DioExceptionType.cancel:
-                    return Center(
-                      child: Text(
-                        t.DioError[dioError.type.name]!.toString(),
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              color: Theme.of(context).colorScheme.error,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    );
-                  // TODO(YumNumm): エラーハンドリング
-                  default:
-                    return Center(
-                      child: Text(
-                        (dioError.response != null)
-                            ? (t.DioError['response'] as Map<String, dynamic>)[
-                                        dioError.response!.statusCode
-                                            .toString()]
-                                    ?.toString() ??
-                                t.DioError['other']!.toString()
-                            : t.DioError['other']!.toString(),
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              color: Theme.of(context).colorScheme.error,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    );
-                }
-              }(),
-            ),
-          ],
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+    if (error is RepositorySearchFetchException) {
+      final exception = (error as RepositorySearchFetchException).exception;
+
+      if (exception is DioException) {
+        var message = exception.message;
+        try {
+          final errorInfo = ApiErrorResponse.fromJson(
+            exception.response?.data as Map<String, dynamic>,
+          );
+          message = errorInfo.tip;
+          // ignore: empty_catches
+        } on () {}
+
+        return Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                flex: 2,
+                child: LottieBuilder.asset(
+                  'assets/75279-error.json',
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    message ?? t.DioError[exception.type.name].toString(),
+                    style: textTheme.titleLarge!.copyWith(
+                      color: colorScheme.error,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+
+      return Center(
+        child: Text(
+          '$error\n'
+          '${(error as RepositorySearchFetchException).exception}',
         ),
       );
     }
 
-    return SliverFillRemaining(
-      child: Center(
-        child: Text('$error'),
-      ),
+    return Center(
+      child: Text('$error'),
     );
   }
 }

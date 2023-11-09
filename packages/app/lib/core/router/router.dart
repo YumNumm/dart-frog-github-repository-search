@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:github_repository_search/features/error/route_error_screen.dart';
-import 'package:github_repository_search/ui/page/search_view/search_view.dart';
-import 'package:github_repository_search/ui/page/setting_view/language_choice_page.dart';
-import 'package:github_repository_search/ui/page/setting_view/settings_view.dart';
-import 'package:github_repository_search/ui/page/setting_view/theme_choice_page.dart';
+import 'package:github_repository_search/features/search/ui/search_page.dart';
+import 'package:github_repository_search/features/settings/bff_endpoint/bff_endpoint.dart';
+import 'package:github_repository_search/features/settings/language_choice/language_choice_page.dart';
+import 'package:github_repository_search/features/settings/settings_view.dart';
+import 'package:github_repository_search/features/settings/theme_choice/theme_choice_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -30,6 +31,9 @@ class HomeRoute extends GoRouteData {
     ),
     TypedGoRoute<LanguageChoiceRoute>(
       path: 'language',
+    ),
+    TypedGoRoute<BffEndpointChoiceRoute>(
+      path: 'bff_endpoint',
     ),
   ],
 )
@@ -60,8 +64,17 @@ class LanguageChoiceRoute extends GoRouteData {
   }
 }
 
+class BffEndpointChoiceRoute extends GoRouteData {
+  const BffEndpointChoiceRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const BffEndpointChoicePage();
+  }
+}
+
 @Riverpod(keepAlive: true)
-GoRouter goRouter(GoRouterRef ref) => GoRouter(
+GoRouter router(RouterRef ref) => GoRouter(
       routes: $appRoutes,
       debugLogDiagnostics: kDebugMode,
       errorBuilder: (context, state) => RouteErrorScreen(state.error!),

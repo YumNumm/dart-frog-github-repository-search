@@ -2,9 +2,8 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../i18n/strings.g.dart';
-import '../../../provider/setting/theme_provider.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
+import 'package:github_repository_search/core/provider/setting/theme_provider.dart';
 
 const int android12SdkVersion = 31;
 

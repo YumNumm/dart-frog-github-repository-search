@@ -25,7 +25,9 @@ mixin _$RepositorySearchRequest {
   RepositorySearchRequestSort? get sort => throw _privateConstructorUsedError;
   RepositorySearchRequestOrder? get order =>
       throw _privateConstructorUsedError; // max 100
+  @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
   int? get perPage => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
   int? get page => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +46,9 @@ abstract class $RepositorySearchRequestCopyWith<$Res> {
       {String query,
       RepositorySearchRequestSort? sort,
       RepositorySearchRequestOrder? order,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       int? perPage,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       int? page});
 }
 
@@ -106,7 +110,9 @@ abstract class _$$RepositorySearchRequestImplCopyWith<$Res>
       {String query,
       RepositorySearchRequestSort? sort,
       RepositorySearchRequestOrder? order,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       int? perPage,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       int? page});
 }
 
@@ -161,7 +167,9 @@ class _$RepositorySearchRequestImpl implements _RepositorySearchRequest {
       {required this.query,
       this.sort = RepositorySearchRequestSort.bestMatch,
       this.order = RepositorySearchRequestOrder.desc,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       this.perPage = 30,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       this.page = 1});
 
   factory _$RepositorySearchRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -177,10 +185,10 @@ class _$RepositorySearchRequestImpl implements _RepositorySearchRequest {
   final RepositorySearchRequestOrder? order;
 // max 100
   @override
-  @JsonKey()
+  @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
   final int? perPage;
   @override
-  @JsonKey()
+  @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
   final int? page;
 
   @override
@@ -225,7 +233,9 @@ abstract class _RepositorySearchRequest implements RepositorySearchRequest {
       {required final String query,
       final RepositorySearchRequestSort? sort,
       final RepositorySearchRequestOrder? order,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       final int? perPage,
+      @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
       final int? page}) = _$RepositorySearchRequestImpl;
 
   factory _RepositorySearchRequest.fromJson(Map<String, dynamic> json) =
@@ -238,8 +248,10 @@ abstract class _RepositorySearchRequest implements RepositorySearchRequest {
   @override
   RepositorySearchRequestOrder? get order;
   @override // max 100
+  @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
   int? get perPage;
   @override
+  @JsonKey(fromJson: _intNullableFromJson, toJson: _intNullableToJson)
   int? get page;
   @override
   @JsonKey(ignore: true)

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../model/setting/theme_model.dart';
+part 'theme_provider.freezed.dart';
 
 final themeProvider = StateNotifierProvider<ThemeNotifier, ThemeModel>(
   (ref) => ThemeNotifier(),
@@ -72,4 +73,15 @@ class ThemeNotifier extends StateNotifier<ThemeModel> {
     );
     _saveSettingsToSharedPrefrences();
   }
+}
+
+@freezed
+class ThemeModel with _$ThemeModel {
+  const factory ThemeModel({
+    /// テーマモード
+    @Default(ThemeMode.system) ThemeMode themeMode,
+
+    /// 可能な場合、ダイナミックカラーを利用するか
+    @Default(true) bool useDynamicColor,
+  }) = _ThemeModel;
 }

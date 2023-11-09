@@ -28,8 +28,10 @@ _$RepositorySearchRequestImpl _$$RepositorySearchRequestImplFromJson(
                   $enumDecodeNullable(
                       _$RepositorySearchRequestOrderEnumMap, v) ??
                   RepositorySearchRequestOrder.desc),
-          perPage: $checkedConvert('per_page', (v) => v as int? ?? 30),
-          page: $checkedConvert('page', (v) => v as int? ?? 1),
+          perPage: $checkedConvert('per_page',
+              (v) => v == null ? 30 : _intNullableFromJson(v as String?)),
+          page: $checkedConvert('page',
+              (v) => v == null ? 1 : _intNullableFromJson(v as String?)),
         );
         return val;
       },
@@ -42,8 +44,8 @@ Map<String, dynamic> _$$RepositorySearchRequestImplToJson(
       'query': instance.query,
       'sort': _$RepositorySearchRequestSortEnumMap[instance.sort],
       'order': _$RepositorySearchRequestOrderEnumMap[instance.order],
-      'per_page': instance.perPage,
-      'page': instance.page,
+      'per_page': _intNullableToJson(instance.perPage),
+      'page': _intNullableToJson(instance.page),
     };
 
 const _$RepositorySearchRequestSortEnumMap = {

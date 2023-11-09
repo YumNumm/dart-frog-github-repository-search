@@ -206,6 +206,7 @@ mixin _$RepositorySearchResponseItem {
   int get forks => throw _privateConstructorUsedError;
   int get openIssues => throw _privateConstructorUsedError;
   int get watchers => throw _privateConstructorUsedError;
+  int get stars => throw _privateConstructorUsedError;
   List<String> get topics => throw _privateConstructorUsedError;
   String? get mirrorUrl => throw _privateConstructorUsedError;
   RepositorySearchResponseLicense? get license =>
@@ -239,6 +240,7 @@ abstract class $RepositorySearchResponseItemCopyWith<$Res> {
       int forks,
       int openIssues,
       int watchers,
+      int stars,
       List<String> topics,
       String? mirrorUrl,
       RepositorySearchResponseLicense? license});
@@ -274,6 +276,7 @@ class _$RepositorySearchResponseItemCopyWithImpl<$Res,
     Object? forks = null,
     Object? openIssues = null,
     Object? watchers = null,
+    Object? stars = null,
     Object? topics = null,
     Object? mirrorUrl = freezed,
     Object? license = freezed,
@@ -330,6 +333,10 @@ class _$RepositorySearchResponseItemCopyWithImpl<$Res,
       watchers: null == watchers
           ? _value.watchers
           : watchers // ignore: cast_nullable_to_non_nullable
+              as int,
+      stars: null == stars
+          ? _value.stars
+          : stars // ignore: cast_nullable_to_non_nullable
               as int,
       topics: null == topics
           ? _value.topics
@@ -396,6 +403,7 @@ abstract class _$$RepositorySearchResponseItemImplCopyWith<$Res>
       int forks,
       int openIssues,
       int watchers,
+      int stars,
       List<String> topics,
       String? mirrorUrl,
       RepositorySearchResponseLicense? license});
@@ -432,6 +440,7 @@ class __$$RepositorySearchResponseItemImplCopyWithImpl<$Res>
     Object? forks = null,
     Object? openIssues = null,
     Object? watchers = null,
+    Object? stars = null,
     Object? topics = null,
     Object? mirrorUrl = freezed,
     Object? license = freezed,
@@ -489,6 +498,10 @@ class __$$RepositorySearchResponseItemImplCopyWithImpl<$Res>
           ? _value.watchers
           : watchers // ignore: cast_nullable_to_non_nullable
               as int,
+      stars: null == stars
+          ? _value.stars
+          : stars // ignore: cast_nullable_to_non_nullable
+              as int,
       topics: null == topics
           ? _value._topics
           : topics // ignore: cast_nullable_to_non_nullable
@@ -523,6 +536,7 @@ class _$RepositorySearchResponseItemImpl
       required this.forks,
       required this.openIssues,
       required this.watchers,
+      required this.stars,
       required final List<String> topics,
       required this.mirrorUrl,
       this.license})
@@ -558,6 +572,8 @@ class _$RepositorySearchResponseItemImpl
   final int openIssues;
   @override
   final int watchers;
+  @override
+  final int stars;
   final List<String> _topics;
   @override
   List<String> get topics {
@@ -573,7 +589,7 @@ class _$RepositorySearchResponseItemImpl
 
   @override
   String toString() {
-    return 'RepositorySearchResponseItem(fullName: $fullName, owner: $owner, private: $private, htmlUrl: $htmlUrl, description: $description, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, language: $language, forks: $forks, openIssues: $openIssues, watchers: $watchers, topics: $topics, mirrorUrl: $mirrorUrl, license: $license)';
+    return 'RepositorySearchResponseItem(fullName: $fullName, owner: $owner, private: $private, htmlUrl: $htmlUrl, description: $description, fork: $fork, createdAt: $createdAt, updatedAt: $updatedAt, pushedAt: $pushedAt, language: $language, forks: $forks, openIssues: $openIssues, watchers: $watchers, stars: $stars, topics: $topics, mirrorUrl: $mirrorUrl, license: $license)';
   }
 
   @override
@@ -602,6 +618,7 @@ class _$RepositorySearchResponseItemImpl
                 other.openIssues == openIssues) &&
             (identical(other.watchers, watchers) ||
                 other.watchers == watchers) &&
+            (identical(other.stars, stars) || other.stars == stars) &&
             const DeepCollectionEquality().equals(other._topics, _topics) &&
             (identical(other.mirrorUrl, mirrorUrl) ||
                 other.mirrorUrl == mirrorUrl) &&
@@ -625,6 +642,7 @@ class _$RepositorySearchResponseItemImpl
       forks,
       openIssues,
       watchers,
+      stars,
       const DeepCollectionEquality().hash(_topics),
       mirrorUrl,
       license);
@@ -661,6 +679,7 @@ abstract class _RepositorySearchResponseItem
           required final int forks,
           required final int openIssues,
           required final int watchers,
+          required final int stars,
           required final List<String> topics,
           required final String? mirrorUrl,
           final RepositorySearchResponseLicense? license}) =
@@ -695,6 +714,8 @@ abstract class _RepositorySearchResponseItem
   int get openIssues;
   @override
   int get watchers;
+  @override
+  int get stars;
   @override
   List<String> get topics;
   @override
