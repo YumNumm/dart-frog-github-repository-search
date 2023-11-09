@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:github_repository_search/model/github/search_response/search_response_item.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../i18n/strings.g.dart';
 
 class RepositoryItemWidgetViewModel {
   Future<void> onItemPressed(

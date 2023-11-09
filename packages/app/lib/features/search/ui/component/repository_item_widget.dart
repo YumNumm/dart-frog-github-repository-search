@@ -1,12 +1,11 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:github_repository_search/ui/page/search_view/component/repository_item_widget.viewmodel.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
+import 'package:github_repository_search/features/search/ui/component/repository_item_widget.viewmodel.dart';
 import 'package:intl/intl.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
-import '../../../../i18n/strings.g.dart';
-import '../../../../model/github/search_response/search_response_item.dart';
-import '../../component/language_icon.dart';
+import '../../../../ui/page/component/language_icon.dart';
 
 class RepositoryItemWidget extends StatelessWidget {
   const RepositoryItemWidget({
@@ -15,7 +14,7 @@ class RepositoryItemWidget extends StatelessWidget {
     required this.term,
   });
 
-  final SearchResponseItem item;
+  final Repository item;
   final String term;
 
   @override
@@ -56,7 +55,7 @@ class RepositoryItemWidget extends StatelessWidget {
               Text(
                 'stars',
                 style: theme.textTheme.bodySmall,
-              )
+              ),
             ],
           ),
           if (item.language != null)
@@ -169,7 +168,7 @@ class RepositoryDetailWidget extends StatelessWidget {
                         Text(
                           t.repositoryDetailWidget.watchers,
                           style: theme.textTheme.bodySmall,
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -191,7 +190,7 @@ class RepositoryDetailWidget extends StatelessWidget {
                         Text(
                           t.repositoryDetailWidget.forks,
                           style: theme.textTheme.bodySmall,
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -213,7 +212,7 @@ class RepositoryDetailWidget extends StatelessWidget {
                         Text(
                           t.repositoryDetailWidget.openIssues,
                           style: theme.textTheme.bodySmall,
-                        )
+                        ),
                       ],
                     ),
                   ),

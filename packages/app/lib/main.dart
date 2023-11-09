@@ -8,9 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/i18n/strings.g.dart';
 // ignore: depend_on_referenced_packages
 
-import 'i18n/strings.g.dart';
 import 'provider/language_colors.dart';
 import 'provider/shared_preferences.dart';
 import 'ui/app.dart';
