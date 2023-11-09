@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:github_repository_search/ui/page/search_view/component/repository_search_text_field.viewmodel.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
+import 'package:github_repository_search/features/search/ui/component/repository_search_text_field.viewmodel.dart';
 
-import '../../../../i18n/strings.g.dart';
 
 class RepositorySearchTextField extends ConsumerWidget {
   const RepositorySearchTextField({

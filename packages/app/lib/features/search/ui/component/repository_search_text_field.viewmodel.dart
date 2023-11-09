@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:github_repository_search/ui/page/search_view/search_view.viewmodel.dart';
+import 'package:github_repository_search/features/search/ui/search_view.viewmodel.dart';
 
 class RepositorySearchTextFieldViewModel {
   RepositorySearchTextFieldViewModel();

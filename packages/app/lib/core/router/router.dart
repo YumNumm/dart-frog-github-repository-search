@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_repository_search/features/error/route_error_screen.dart';
+import 'package:github_repository_search/ui/page/search_view/search_view.dart';
+import 'package:github_repository_search/ui/page/setting_view/language_choice_page.dart';
+import 'package:github_repository_search/ui/page/setting_view/settings_view.dart';
+import 'package:github_repository_search/ui/page/setting_view/theme_choice_page.dart';
 import 'package:go_router/go_router.dart';
-
-import 'page/route_error_view/route_error_view.dart';
-import 'page/search_view/search_view.dart';
-import 'page/setting_view/language_choice_page.dart';
-import 'page/setting_view/settings_view.dart';
-import 'page/setting_view/theme_choice_page.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
 
@@ -61,10 +60,9 @@ class LanguageChoiceRoute extends GoRouteData {
   }
 }
 
-final routerProvider = Provider<GoRouter>(
-  (ref) => GoRouter(
-    routes: $appRoutes,
-    debugLogDiagnostics: kDebugMode,
-    errorBuilder: (context, state) => RouteErrorScreen(state.error!),
-  ),
-);
+@Riverpod(keepAlive: true)
+GoRouter goRouter(GoRouterRef ref) => GoRouter(
+      routes: $appRoutes,
+      debugLogDiagnostics: kDebugMode,
+      errorBuilder: (context, state) => RouteErrorScreen(state.error!),
+    );

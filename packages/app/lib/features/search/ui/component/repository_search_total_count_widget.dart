@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:github_repository_search/ui/page/search_view/search_view.viewmodel.dart';
+import 'package:github_repository_search/core/i18n/strings.g.dart';
+import 'package:github_repository_search/features/search/ui/search_view.viewmodel.dart';
 import 'package:intl/intl.dart';
 import 'package:substring_highlight/substring_highlight.dart';
-
-import '../../../../i18n/strings.g.dart';
 
 class RepositorySearchTotalCountWidget extends ConsumerWidget {
   const RepositorySearchTotalCountWidget({

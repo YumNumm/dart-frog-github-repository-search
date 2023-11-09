@@ -49,6 +49,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  bff_api_types:
+    dependency: "direct main"
+    description:
+      path: "../bff_api_types"
+      relative: true
+    source: path
+    version: "1.0.0"
   boolean_selector:
     dependency: transitive
     description:
