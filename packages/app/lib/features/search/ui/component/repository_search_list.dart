@@ -101,12 +101,13 @@ class RepositorySearchErrorWidget extends StatelessWidget {
       if (exception is DioException) {
         var message = exception.message;
         try {
-          final errorInfo = ApiErrorResponse.fromJson(
-            exception.response?.data as Map<String, dynamic>,
-          );
-          message = errorInfo.tip;
+          final res = exception.response?.data;
+          if (res is Map<String, dynamic>) {
+            final errorInfo = ApiErrorResponse.fromJson(res);
+            message = errorInfo.tip;
+          }
           // ignore: empty_catches
-        } on () {}
+        } on Exception {}
 
         return Padding(
           padding: const EdgeInsets.all(8),
