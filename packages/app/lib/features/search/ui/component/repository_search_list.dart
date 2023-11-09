@@ -106,7 +106,8 @@ class RepositorySearchErrorWidget extends StatelessWidget {
           );
           message = errorInfo.tip;
           // ignore: empty_catches
-        } on () {}
+        } on Exception {
+        } on Error {}
 
         return Padding(
           padding: const EdgeInsets.all(8),
