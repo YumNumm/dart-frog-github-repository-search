@@ -1,4 +1,4 @@
-name: release
+name: Release Web
 
 on:
   push:
@@ -60,5 +60,4 @@ jobs:
           projectName: dart-frog-github-repository-search
           directory: ./build/web
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          wranglerVersion: "3"
+          workingDirectory: ./packages/app
