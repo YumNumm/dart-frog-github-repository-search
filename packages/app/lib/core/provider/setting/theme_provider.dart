@@ -61,7 +61,8 @@ class ThemeNotifier extends StateNotifier<ThemeModel> {
   /// ## ダークモードかどうか
   /// システム設定のテーマも考慮します
   bool get isDarkMode => (state.themeMode == ThemeMode.system)
-      ? (SchedulerBinding.instance.window.platformBrightness == Brightness.dark)
+      ? (SchedulerBinding.instance.platformDispatcher.platformBrightness ==
+          Brightness.dark)
       : state.themeMode == ThemeMode.dark;
 
   /// ## ダイナミックカラーの利用変更

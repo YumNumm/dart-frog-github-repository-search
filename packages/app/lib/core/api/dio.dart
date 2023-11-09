@@ -9,5 +9,8 @@ Dio dio(DioRef ref) => Dio(
       BaseOptions(
         baseUrl: '${ref.watch(bffApiBaseUrlProvider)}/api/v1',
         contentType: 'application/json',
+        connectTimeout: const Duration(milliseconds: 5000),
+        receiveTimeout: const Duration(milliseconds: 5000),
+        sendTimeout: const Duration(milliseconds: 5000),
       ),
     )..interceptors.add(LogInterceptor());
