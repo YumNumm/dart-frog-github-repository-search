@@ -53,7 +53,7 @@ class CustomSwitch extends StatelessWidget {
                         color: Colors.black12.withOpacity(0.15),
                         spreadRadius: 0.5,
                         blurRadius: 1,
-                      )
+                      ),
                   ],
                 ),
               ),

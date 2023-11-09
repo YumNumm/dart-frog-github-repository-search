@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../provider/setting/theme_provider.dart';
 import '../core/theme/theme.dart';
+import '../provider/setting/theme_provider.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});
