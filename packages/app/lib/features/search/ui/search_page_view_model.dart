@@ -60,6 +60,7 @@ class RepositorySearchViewModel extends _$RepositorySearchViewModel {
           .copyWithPrevious(state!);
     } else {
       state = const AsyncLoading<List<RepositorySearchResponseItem>>();
+      _currentPage = 0;
     }
     final query = ArgumentError.checkNotNull(
       ref.read(repositorySearchQueryProvider),

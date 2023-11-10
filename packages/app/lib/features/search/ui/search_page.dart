@@ -55,9 +55,11 @@ class _FloatingActionButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = ref.watch(repositorySearchQueryProvider);
+    final hasResult =
+        ref.watch(repositorySearchTotalCountProvider.select((s) => s != null));
     return switch (query) {
       null => const SizedBox.shrink(),
-      _ => FloatingActionButton.extended(
+      _ when !hasResult => FloatingActionButton.extended(
           heroTag: 'RepositorySearchFloatingActionButton',
           onPressed: () async {
             primaryFocus?.unfocus();
@@ -71,6 +73,7 @@ class _FloatingActionButton extends ConsumerWidget {
           label: Text(t.mainView.search),
           icon: const Icon(Icons.search),
         ),
+      _ => const SizedBox.shrink(),
     };
   }
 }
