@@ -58,7 +58,7 @@ dev_dependencies:
   json_serializable: ^6.7.1
   pedantic_mono: ^1.24.0
   retrofit_generator: ^8.0.3
-  riverpod_generator: ^2.3.5
+  riverpod_generator: ^2.3.9
   slang_build_runner: ^3.25.0
 
 flutter:
